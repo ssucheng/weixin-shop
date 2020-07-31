@@ -40,11 +40,8 @@ Component({
    */
   methods: {
       btn(e){
-          console.log(e)
           const{index} = e.currentTarget.dataset
-          console.log(index)
            const {tabsList:list} = this.data
-           console.log(list)
           //  debugger
            list.forEach((item,i) => {
             i === index? item.isActive = true : item.isActive = false

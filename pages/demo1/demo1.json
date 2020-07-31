@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "iosTip": "/components/Tabs/Tabs"
+  }
+}

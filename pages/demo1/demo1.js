@@ -29,9 +29,7 @@ Page({
     ]
   },
   handleItemChange(val){
-    console.log(val)
     const {detail:index} = val
-    console.log(index)
     const {tabsList:list} = this.data
     list.forEach((item,i) => {
       index === i ? item.isActive = true : item.isActive = false

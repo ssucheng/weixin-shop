@@ -3,8 +3,8 @@ import {getCarouselApi,getCatitemsApi,getfloorDataApi} from '../../api/api.js'
 Page({
   data: {
     carouselList:[],//轮播图数据
-    catitemsList:[],
-    floorData:[],
+    catitemsList:[],//导航数据
+    floorData:[],//楼层数据
     autoplay:true,
     interval:5000,
     duration:500,

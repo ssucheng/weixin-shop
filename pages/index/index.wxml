@@ -33,10 +33,16 @@
   <view class="floor"> 
       <view class="floorItem" wx:for="{{floorData}}" wx:key="index">
           <view class="floorItem_tit" >
-
+            <image mode="widthFix" src="{{item.floor_title.image_src}}"></image>
           </view>
            <view class="floorItem_content" >
-            
+             <navigator wx:for="{{item.product_list}}"
+             wx:key="name"
+             wx:for-index="index1"
+             wx:for-item="item1" 
+             url="{{item1.navigator_url}}">
+                <image mode="{{index1 == 0 ?'':'scaleToFill'}}" src="{{item1.image_src}}"></image>
+             </navigator>
           </view>
       </view>
   </view>

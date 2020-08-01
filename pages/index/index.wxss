@@ -1,0 +1,8 @@
+.carousel swiper {
+  width: 750rpx;
+  height: 340rpx;
+}
+.carousel swiper image {
+  width: 100%;
+  height: 100%;
+}

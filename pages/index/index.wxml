@@ -2,5 +2,21 @@
   <!-- 搜索框 -->
   <searchBar></searchBar>
   <!-- 轮播图 -->
+  <view class="carousel" >
+    <swiper indicator-dots="{{indicatorDots}}"
+        autoplay="{{autoplay}}" 
+        interval="{{interval}}"
+        duration="{{duration}}" 
+        circular="{{circular}}" 
+        indicator-dots="{{indicatorDots}}">
+      <swiper-item class="carouselItem" item-id="" wx:for="{{carouselList}}" wx:key="goods_id">
+         <image class="" src="{{item.image_src}}" >
+         </image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <!-- 导航 -->
+  <view>
     
+  </view>
 </view>

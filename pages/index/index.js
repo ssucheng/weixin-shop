@@ -1,9 +1,10 @@
 //Page Object
-import {getCarouselApi,getCatitemsApi} from '../../api/api.js'
+import {getCarouselApi,getCatitemsApi,getfloorDataApi} from '../../api/api.js'
 Page({
   data: {
     carouselList:[],//轮播图数据
     catitemsList:[],
+    floorData:[],
     autoplay:true,
     interval:5000,
     duration:500,
@@ -14,6 +15,7 @@ Page({
   onLoad: function(options){
    this.getCarousel()
    this.getCatitems()
+   this.getfloorData()
   },
   //获取轮播图数据的方法
   async getCarousel(){
@@ -26,9 +28,17 @@ Page({
   // 获取分类数据的方法
   async getCatitems(){
     const {data:res} = await getCatitemsApi('home/catitems')
-    if(res.meta.status !== 200 ) return wx.showToast({ title:'分类请求失败' })
+    if(res.meta.status !== 200 ) return wx.showToast({ title:'分类数据请求失败' })
     this.setData({
       catitemsList:res.message
+    })
+  },
+  // 获取楼层数据
+  async getfloorData(){
+    const {data:res} = await getfloorDataApi('home/floordata')
+    if(res.meta.status !== 200 ) return wx.showToast({ title:'楼层数据请求失败' })
+    this.setData({
+      floorData:res.message
     })
   },
   onReady: function(){

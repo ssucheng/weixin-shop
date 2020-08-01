@@ -16,3 +16,11 @@ export function getCatitemsApi(url){
         method:'GET'
     })
 }
+
+// 楼层数据
+export function getfloorDataApi(url){
+    return fetch({
+        url:api.baseUrl + url,
+        method:'GET'
+    })
+}

@@ -29,4 +29,15 @@
         </image>
       </navigator>
   </view>
+  <!-- 楼层 -->
+  <view class="floor"> 
+      <view class="floorItem" wx:for="{{floorData}}" wx:key="index">
+          <view class="floorItem_tit" >
+
+          </view>
+           <view class="floorItem_content" >
+            
+          </view>
+      </view>
+  </view>
 </view>

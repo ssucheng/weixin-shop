@@ -1,6 +1,6 @@
-<view class="" >
-  <searchBar></searchBar>>
-  <view class="iconfont icon-receipt-address " >
+<view class="index" >
+  <!-- 搜索框 -->
+  <searchBar></searchBar>
+  <!-- 轮播图 -->
     
-  </view>
 </view>

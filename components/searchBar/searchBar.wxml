@@ -1,6 +1,6 @@
 <!--components/searchBar/searchBar.wxml-->
 <view class="searchBar" >
-    <navigator url="{{dataUrl}}" >
+    <navigator class="navigator" url="{{dataUrl}}" >
         搜索
     </navigator>
 </view>

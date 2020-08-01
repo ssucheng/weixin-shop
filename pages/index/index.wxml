@@ -10,13 +10,23 @@
         circular="{{circular}}" 
         indicator-dots="{{indicatorDots}}">
       <swiper-item class="carouselItem" item-id="" wx:for="{{carouselList}}" wx:key="goods_id">
-         <image class="" src="{{item.image_src}}" >
-         </image>
+          <navigator url="{{item.navigator_url}}">
+               <image class="" mode="widthFix" src="{{item.image_src}}" >
+                </image>
+          </navigator>
       </swiper-item>
     </swiper>
   </view>
   <!-- 导航 -->
-  <view>
-    
+  <view class="nav">
+      <navigator wx:for="{{catitemsList}}" 
+      class="navItem"
+      wx:key="name" 
+      url="/pages/category/category"
+      open-type="switchTab">
+        <image class="" mode="widthFix" src="{{item.image_src}}" >
+          
+        </image>
+      </navigator>
   </view>
 </view>

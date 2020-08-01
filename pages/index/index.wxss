@@ -6,3 +6,13 @@
   width: 100%;
   height: 100%;
 }
+.nav {
+  display: flex;
+}
+.nav .navItem {
+  flex: 1;
+  padding: 20rpx;
+}
+.nav .navItem image {
+  width: 100%;
+}

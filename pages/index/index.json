@@ -1,5 +1,8 @@
 {
-  "usingComponents": {},
+  "usingComponents": {
+    "searchBar":"../../components/searchBar/searchBar"
+
+  },
   "navigationBarTitleText":"优购首页"
 
 }

@@ -1,5 +1,5 @@
 <view class="" >
-  首页
+  <searchBar></searchBar>>
   <view class="iconfont icon-receipt-address " >
     
   </view>

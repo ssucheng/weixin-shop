@@ -25,3 +25,7 @@
   color: var(--themeColor);
   font-size: 40rpx;
 }
+.goods_content navigator .goods_right view:nth-child(3) {
+  text-align: center;
+  font-size: 32rpx;
+}

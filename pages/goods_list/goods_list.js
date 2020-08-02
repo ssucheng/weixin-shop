@@ -28,8 +28,7 @@ Page({
       }
     ],
     goodsList:[],
-    total:0,
-    pagenum:0
+    flag:false,
 
   },
   queryData:{
@@ -38,6 +37,8 @@ Page({
     pagenum:1,
     pagesize:10
   },
+  count:1,
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -58,12 +59,12 @@ Page({
   },
   async getList(){
     const {data:res} = await getGoodsSearchApi('goods/search',{ ...this.queryData})
-    console.log(res)
-    let count = Math.ceil(res.total/this.queryData.pagenum)
+    // count为总页数 数据总共为count页
+    this.count = Math.ceil(res.message.total/this.queryData.pagesize)
     if(res.meta.status !== 200) return wx.showToast({
-      title: '获取商品列表失败'
+      title: '请求失败'
     })
-    let goodsList = res.message.goods
+    let goodsList = [...this.data.goodsList ,...res.message.goods] 
     this.setData({
       goodsList,
     })
@@ -107,7 +108,12 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    // 判断下当前页是否大于总页数
+    console.log(this.queryData.pagenum)
+    console.log(this.count)
+    if(this.queryData.pagenum >= this.count) return this.setData({flag:true})
+    this.queryData.pagenum++
+    this.getList()
   },
 
   /**

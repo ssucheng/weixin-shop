@@ -20,7 +20,7 @@ Page({
   //获取轮播图数据的方法
   async getCarousel(){
   const {data:res} = await getCarouselApi('home/swiperdata')
-    if(res.meta.status !== 200 ) return wx.showToast({ title:'轮播图请求失败' })
+    if(res.meta.status !== 200 ) return wx.showToast({ title:'轮播图请求失败' ,icon:"none"})
     this.setData({
       carouselList:res.message
     })
@@ -28,7 +28,7 @@ Page({
   // 获取分类数据的方法
   async getCatitems(){
     const {data:res} = await getCatitemsApi('home/catitems')
-    if(res.meta.status !== 200 ) return wx.showToast({ title:'分类数据请求失败' })
+    if(res.meta.status !== 200 ) return wx.showToast({ title:'分类数据请求失败' ,icon:"none"})
     this.setData({
       catitemsList:res.message
     })
@@ -36,7 +36,7 @@ Page({
   // 获取楼层数据
   async getfloorData(){
     const {data:res} = await getfloorDataApi('home/floordata')
-    if(res.meta.status !== 200 ) return wx.showToast({ title:'楼层数据请求失败' })
+    if(res.meta.status !== 200 ) return wx.showToast({ title:'楼层数据请求失败' ,icon:"none"})
     this.setData({
       floorData:res.message
     })

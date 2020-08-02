@@ -62,7 +62,8 @@ Page({
     // count为总页数 数据总共为count页
     this.count = Math.ceil(res.message.total/this.queryData.pagesize)
     if(res.meta.status !== 200) return wx.showToast({
-      title: '请求失败'
+      title: '请求商品列表失败',
+      icon:"none"
     })
     let goodsList = [...this.data.goodsList ,...res.message.goods] 
     this.setData({

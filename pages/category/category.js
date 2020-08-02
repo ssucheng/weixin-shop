@@ -60,6 +60,10 @@ Page({
       data: res
     } = await getCategoryApi('categories')
     this.cateList = res.message
+    if(res.meta.status !== 200 ) return wx.showToast({
+      title: '请求分类数据失败',
+      icon: 'none' 
+    })
     //{} 不加就是默认return  加了得自己加关键字return
     // 将数据存在本地的存储中
     wx.setStorageSync('cateList', {

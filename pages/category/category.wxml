@@ -1,2 +1,138 @@
 <!--pages/category/category.wxml-->
-<text>pages/category/category.wxml</text>
+<view class="category">
+    <searchBar ></searchBar>
+    <view class="cate_content">
+        <view class="content_left">
+            <scroll-view  scroll-y="true">
+                <view>1</view>
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+
+
+            </scroll-view>
+        </view>
+        <view class="content_right">
+             <scroll-view  scroll-y="true">
+                <view>1</view>
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+                <view>1</view>
+
+
+            </scroll-view>
+        </view>
+    </view>
+</view>

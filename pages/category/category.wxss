@@ -1,1 +1,24 @@
 /* pages/category/category.wxss */
+page {
+  height: 100%;
+}
+.category {
+  height: 100%;
+}
+.category .cate_content {
+  display: flex;
+}
+.category .cate_content .content_left {
+  flex: 2;
+  background-color: pink;
+}
+.category .cate_content .content_left scroll-view {
+  height: calc(100vh - 80rpx);
+}
+.category .cate_content .content_right {
+  flex: 5;
+  background-color: skyblue;
+}
+.category .cate_content .content_right scroll-view {
+  height: calc(100vh - 80rpx);
+}

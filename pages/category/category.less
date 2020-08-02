@@ -1,0 +1,29 @@
+/* pages/category/category.wxss */
+page{
+    height: 100%;
+}
+.category{
+    height: 100%;
+    .cate_content{
+        
+        display: flex;
+        .content_left{
+            flex:2;
+            background-color: pink;
+            scroll-view{
+                // height: calc(100vh - 80rpx);
+                // 这么写会在wxss中显示错误  会进行错误的计算
+                height: ~'calc(100vh - 80rpx)';//这么写会把字符中内容完整传递过去
+            }
+        }
+        .content_right{
+            flex: 5;
+            background-color: skyblue;
+            scroll-view{
+                // height: calc(100vh - 80rpx);
+                // 这么写会在wxss中显示错误  会进行错误的计算
+                height: ~'calc(100vh - 80rpx)';//这么写会把字符中内容完整传递过去
+            }
+        }
+    }
+}

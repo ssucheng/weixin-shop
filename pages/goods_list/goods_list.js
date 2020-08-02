@@ -1,20 +1,72 @@
 // pages/goods_list/goods_list.js
+import {getGoodsSearchApi} from '../../api/api.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    tabsList:[
+      {
+        id:0,
+        name:'综合',
+        isActive:true
+      }
+      ,
+      { 
+        id:1,
+        name:'销量',
+        isActive:false
+
+      }
+      ,
+      { 
+        id:2,
+        name:"价格",
+        isActive:false
+
+      }
+    ],
+    goodsList:[],
+    total:0,
+    pagenum:0
 
   },
-
+  queryData:{
+    query:'',
+    cid:'',
+    pagenum:1,
+    pagesize:10
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.queryData.cid = options.cid
+    this.getList()
   },
-
+  handleItemChange(val){
+    const {detail:index} = val
+    const {tabsList:list} = this.data
+    list.forEach((item,i) => {
+      index === i ? item.isActive = true : item.isActive = false
+    }
+    )
+    this.setData({
+      tabsList:list
+    })
+  },
+  async getList(){
+    const {data:res} = await getGoodsSearchApi('goods/search',{ ...this.queryData})
+    console.log(res)
+    if(res.meta.status !== 200) return wx.showToast({
+      title: '获取商品列表失败'
+    })
+    let goodsList = res.message.goods
+    this.setData({
+      goodsList,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

@@ -1,14 +1,14 @@
 .tabs .tabs_tit {
   display: flex;
-  padding: 10rpx;
 }
 .tabs .tabs_tit .tit_item {
   flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 15rpx 0;
 }
 .tabs .tabs_tit .active {
-  color: red;
-  border-bottom: 10rpx solid red;
+  color: var(--themeColor);
+  border-bottom: 5rpx solid currentColor;
 }

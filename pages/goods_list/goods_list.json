@@ -1,3 +1,9 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "searchBar":"../../components/searchBar/searchBar",
+    "sctab":"../../components/Tabs/Tabs"
+  }
+  ,
+  "navigationBarTitleText":"商品列表"
+  
 }

@@ -32,3 +32,11 @@ export function getCategoryApi(url){
         method:'GET'
     })
 }
+// 商品列表搜索
+export function getGoodsSearchApi(url,params){
+    return fetch({
+        url:api.baseUrl + url,
+        data:{...params},
+        method:'GET'
+    })
+}

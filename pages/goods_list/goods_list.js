@@ -59,6 +59,7 @@ Page({
   async getList(){
     const {data:res} = await getGoodsSearchApi('goods/search',{ ...this.queryData})
     console.log(res)
+    let count = Math.ceil(res.total/this.queryData.pagenum)
     if(res.meta.status !== 200) return wx.showToast({
       title: '获取商品列表失败'
     })

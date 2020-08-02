@@ -2,7 +2,20 @@
 <view class="goods_list"> 
     <searchBar></searchBar>
     <sctab tabsList="{{tabsList}}" binditemTap="handleItemChange">
-        <view wx:if="{{tabsList[0].isActive}}">1</view>
+        <view wx:if="{{tabsList[0].isActive}}" class="goods_content">
+            <navigator wx:for="{{goodsList}}"
+                      wx:key="goods_id" >
+                <view class="goods_left">
+                    <image mode="widthFix" src="{{item.goods_small_logo?item.goods_small_logo:'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}"></image>
+                </view>
+                <view class="goods_right">
+                    <view>{{item.goods_name}}</view>
+                    <view>
+                        ${{item.goods_price}}
+                    </view>
+                </view>
+            </navigator>
+        </view>
         <view wx:elif="{{tabsList[1].isActive}}">2</view>
         <view wx:else="{{tabsList[2].isActive}}">3</view>
     </sctab>

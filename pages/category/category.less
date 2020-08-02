@@ -1,28 +1,79 @@
 /* pages/category/category.wxss */
 page{
     height: 100%;
-}
-.category{
-    height: 100%;
-    .cate_content{
-        
-        display: flex;
-        .content_left{
-            flex:2;
-            background-color: pink;
-            scroll-view{
-                // height: calc(100vh - 80rpx);
-                // 这么写会在wxss中显示错误  会进行错误的计算
-                height: ~'calc(100vh - 80rpx)';//这么写会把字符中内容完整传递过去
+    .category{
+        height: 100%;
+        .cate_content{ 
+            display: flex;
+            .content_left{
+                flex:2;
+                scroll-view{
+                    // height: calc(100vh - 80rpx);
+                    // 这么写会在wxss中显示错误  会进行错误的计算
+                    height: ~'calc(100vh - 80rpx)';//这么写会把字符中内容完整传递过去
+                    .left_item{
+                        height: 80rpx;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size:30rpx
+                    }
+                    .active{
+                        color: var(--themeColor);
+                        //currentColor 和字体一样的颜色
+                        border-left: 5rpx solid currentColor;
+                    }
+                }
             }
-        }
-        .content_right{
-            flex: 5;
-            background-color: skyblue;
-            scroll-view{
-                // height: calc(100vh - 80rpx);
-                // 这么写会在wxss中显示错误  会进行错误的计算
-                height: ~'calc(100vh - 80rpx)';//这么写会把字符中内容完整传递过去
+            .content_right{
+                flex: 5;
+                // background-color: skyblue;
+                scroll-view{
+                    // height: calc(100vh - 80rpx);
+                    // 这么写会在wxss中显示错误  会进行错误的计算
+                    height: ~'calc(100vh - 80rpx)';//这么写会把字符中内容完整传递过去
+                    .right_item{
+                        .goods_tit{
+                            height: 80rpx;
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            .delimiter{
+                                color:#ccc;
+                                padding: 0 10rpx;
+                            }
+                        }
+                        .goods_list{
+                            // 方法一：
+                        //     overflow: hidden;
+                        //    navigator{ 
+                        //        float: left;
+                        //        width: 33.33%;
+                        //        height: 230rpx;
+                        //        image{
+                        //          width: 100%;  
+                        //        }
+                        //        view{
+                        //            text-align: center;
+                        //        }
+                        //    }
+                        // 方法二
+                            display: flex;
+                            flex-wrap: wrap;
+                            navigator{
+                                text-align: center;
+                                width: 33.33%;
+                                height: 200rpx;
+                                image{
+                                    width: 66%;
+                                }
+                                view{
+                                  font-size: 26rpx;
+                                }
+                            }
+                        }
+                    }
+                }
             }
         }
     }

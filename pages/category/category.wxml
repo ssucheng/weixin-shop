@@ -4,134 +4,39 @@
     <view class="cate_content">
         <view class="content_left">
             <scroll-view  scroll-y="true">
-                <view>1</view>
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
+               <view class="left_item {{index == countIndex? 'active':''}}"
+                     wx:for="{{leftCateList}}"
+                     wx:key="*this"
+                     bindtap="handItemTap"
+                     data-index="{{index}}"
+                     >
+                   {{item}}
+               </view>
 
 
             </scroll-view>
         </view>
         <view class="content_right">
-             <scroll-view  scroll-y="true">
-                <view>1</view>
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-                <view>1</view>
-
-
+             <scroll-view  scroll-y="true" scroll-top="{{scrollTop}}">
+                <view class="right_item" wx:for="{{rigtCatgeList}}"
+                                         wx:key="cat_id"
+                                         >
+                    <view class="goods_tit">
+                        <text class="delimiter">/</text>
+                        <text class="titl">{{item.cat_name}}</text>
+                        <text class="delimiter">/</text>
+                    </view>
+                    <view class="goods_list">
+                        <navigator wx:for="{{item.children}}"
+                                   wx:for-item="item1"
+                                   wx:for-index="index1"
+                                   wx:key="cat_id"
+                                   >
+                            <image mode="widthFix" src="{{item1.cat_icon}}"></image>
+                            <view>{{item1.cat_name}}</view>
+                        </navigator>
+                    </view>
+                </view>
             </scroll-view>
         </view>
     </view>

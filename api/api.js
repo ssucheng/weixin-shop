@@ -24,3 +24,11 @@ export function getfloorDataApi(url){
         method:'GET'
     })
 }
+
+// 分类数据
+export function getCategoryApi(url){
+    return fetch({
+        url:api.baseUrl + url,
+        method:'GET'
+    })
+}

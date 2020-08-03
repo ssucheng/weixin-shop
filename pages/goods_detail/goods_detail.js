@@ -65,6 +65,33 @@ Page({
     })
 
   },
+  handlItemCar(){
+    console.log(1)
+      // 点击加入购物车，如果没有直接添加，如果存在就数量++
+      let carList = wx.getStorageSync('carList') || []
+      let index = carList.findIndex(v => v.goods_id === this.goodsObj.goods_id)
+      if(index !== -1){
+        // 已经有了
+        carList[index].num ++
+        wx.showToast({
+          title: '添加成功0',
+          icon: 'success',
+        })
+      }else{
+        // 没有
+        this.goodsObj.num = 1,
+        this.goodsObj.checked = true
+        carList.push(this.goodsObj)
+        wx.showToast({
+          title: '添加成功',
+          icon: 'success',
+        })
+      }
+      wx.setStorageSync('carList',carList)
+      let carList1 = wx.getStorageSync('carList') || []
+      console.log(carList1)
+  },
+  // 点击收藏事件
   handlItemCollect(){
     //思路： 点击收藏先判断下是否收藏了此件商品 如果收藏了就取消收藏 ，
     // 如果没收藏，就添加收藏

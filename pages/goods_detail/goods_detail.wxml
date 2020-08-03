@@ -27,7 +27,11 @@
             <view class="txt" >
                 {{goodsDetailList.goods_name}}
             </view>
-            <view class="save" >
+            <!-- icon-collection-b -->
+            <view class="save " bindtap="handlItemCollect"
+                                >
+                <view class="iconfont {{isCollect?'icon-collection-b': 'icon-shoucang'}}" >
+                </view>
                 收藏
             </view>
         </view>
@@ -41,10 +45,51 @@
     </view>
     <view class="line" >        
      </view>
+
     <!-- 富文本 -->
     <block>
         <rich-text class="" nodes="{{goodsDetailList.goods_introduce}}">
             
         </rich-text>
     </block>
+    <!-- 购买导航栏 -->
+    <view class="btm_tool" >
+        <view class="btm_item">
+            <view class="iconfont icon-kefu">
+            </view>
+            <view>
+                客服
+            </view>
+            <button open-type="contact"></button>
+        </view>
+         <view class="btm_item">
+            <view class="iconfont icon-fenxiang">
+            </view>
+            <view>
+                分享
+            </view>
+            <button open-type="share"></button>
+        </view>
+         <view class="btm_item">
+            <view class="iconfont icon-gouwuche">
+            </view>
+            <view>
+                购物车
+            </view>
+            <button open-type="switchTab"></button>
+        </view>
+         <view class="btm_item1 car">
+           
+            <view class="">
+                加入购物车
+            </view>
+        </view>
+         <view class="btm_item1 pay">
+           
+            <view class="">
+                立即购买
+            </view>
+        </view>
+        
+    </view>
 </view>

@@ -34,8 +34,10 @@
 }
 .goods_detail .goods_content .goods_text .save {
   flex: 1;
-  text-align: center;
-  line-height: 80rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 .goods_detail .goods_detail_title {
   height: 100rpx;
@@ -44,6 +46,46 @@
   font-weight: bold;
   line-height: 100rpx;
   padding-left: 10rpx;
+}
+.goods_detail .btm_tool {
+  width: 100%;
+  height: 104rpx;
+  background-color: white;
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+}
+.goods_detail .btm_tool .btm_item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-size: 24rpx;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.goods_detail .btm_tool .btm_item button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+.goods_detail .btm_tool .btm_item1 {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.goods_detail .btm_tool .car {
+  background-color: #ffa400;
+}
+.goods_detail .btm_tool .pay {
+  background-color: #f7554d;
 }
 .line {
   height: 18rpx;

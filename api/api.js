@@ -40,3 +40,11 @@ export function getGoodsSearchApi(url,params){
         method:'GET'
     })
 }
+// 商品详情数据
+export function getGoodsDetailApi(url,params){
+    return fetch({
+        url:api.baseUrl + url,
+        data:{...params},
+        method:'GET'
+    })
+}

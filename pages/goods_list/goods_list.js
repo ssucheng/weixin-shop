@@ -57,7 +57,7 @@ Page({
       tabsList:list
     })
   },
-  async getList(callback){
+  async getList(){
     const {data:res} = await getGoodsSearchApi('goods/search',{ ...this.queryData})
     // count为总页数 数据总共为count页
     this.count = Math.ceil(res.message.total/this.queryData.pagesize)
@@ -69,7 +69,7 @@ Page({
     this.setData({
       goodsList,
     })
-    callback && callback()
+    wx.stopPullDownRefresh()
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -104,14 +104,11 @@ Page({
    */
   onPullDownRefresh: function () {
     this.setData({
-      goodsList:[]
+      goodsList:[],
+      flag:false
     })
     this.queryData.pagenum = 1;
-    this.getList(()=>{
-      setTimeout(function () {
-        // wx.stopPullDownRefresh()
-      }, 2000)
-    })
+    this.getList()
   },
 
   /**
@@ -119,8 +116,6 @@ Page({
    */
   onReachBottom: function () {
     // 判断下当前页是否大于总页数
-    console.log(this.queryData.pagenum)
-    console.log(this.count)
     if(this.queryData.pagenum >= this.count) return this.setData({flag:true})
     this.queryData.pagenum++
     this.getList()

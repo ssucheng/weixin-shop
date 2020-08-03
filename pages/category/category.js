@@ -24,20 +24,12 @@ Page({
     
     const CateList = wx.getStorageSync('cateList')
     if (!CateList) {
-      this.getCategory(()=>{
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 2000)
-      })
+      this.getCategory()
     } else {
       // 用于场景 重新进入小程序如果没有超过这个时间 就不会请求
       //30分钟
       if (Date.now() - CateList.time > 1000 * 60 * 30 ) {
-        this.getCategory(()=>{
-          setTimeout(function () {
-            wx.hideLoading()
-          }, 2000)
-        })
+        this.getCategory()
       } else {
         // 没有过期的旧数据的使用
         this.cateList = CateList.data
@@ -52,10 +44,10 @@ Page({
     }
   },
   async getCategory(callback) {
-    wx.showLoading({
-      title: '加载中',
-      mask:true
-    })
+    // wx.showLoading({
+    //   title: '加载中',
+    //   mask:true
+    // })
     const {
       data: res
     } = await getCategoryApi('categories')

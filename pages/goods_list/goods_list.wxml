@@ -4,7 +4,8 @@
     <sctab tabsList="{{tabsList}}" binditemTap="handleItemChange">
         <view wx:if="{{tabsList[0].isActive}}" class="goods_content">
             <navigator wx:for="{{goodsList}}"
-                      wx:key="goods_id" >
+                      wx:key="goods_id" 
+                      url="/pages/goods_detail/goods_detail?goods_id={{item.goods_id}}">
                 <view class="goods_left">
                     <image mode="widthFix" src="{{item.goods_small_logo?item.goods_small_logo:'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}"></image>
                 </view>

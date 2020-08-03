@@ -66,12 +66,13 @@ Page({
 
   },
   handlItemCar(){
-    console.log(1)
+      
       // 点击加入购物车，如果没有直接添加，如果存在就数量++
       let carList = wx.getStorageSync('carList') || []
       let index = carList.findIndex(v => v.goods_id === this.goodsObj.goods_id)
       if(index !== -1){
         // 已经有了
+        // console.log(null++)
         carList[index].num ++
         wx.showToast({
           title: '添加成功0',

@@ -15,9 +15,9 @@
                     </view>
                 </view>
             </navigator>
-            <view wx:if="{{flag}}">
+            <view wx:if="{{flag}}" class="flag">
                    ---- 我也是有底线的 ----
-                </view>
+             </view>
         </view>
         <view wx:elif="{{tabsList[1].isActive}}">2</view>
         <view wx:else="{{tabsList[2].isActive}}">3</view>

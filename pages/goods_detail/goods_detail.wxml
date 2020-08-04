@@ -76,7 +76,7 @@
             <view>
                 购物车
             </view>
-            <button open-type="switchTab"></button>
+            <button  bindtap="handlcarSwitchTab"></button>
         </view>
          <view class="btm_item1 car" bindtap="handlItemCar">
            

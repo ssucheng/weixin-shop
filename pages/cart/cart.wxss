@@ -1,1 +1,4 @@
 /* pages/cart/cart.wxss */
+.cart .cart_item {
+  margin-top: 20rpx;
+}

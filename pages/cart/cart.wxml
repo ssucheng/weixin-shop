@@ -33,9 +33,9 @@
                 <view class="goods_content">
                     <view class="goods_pirce">￥{{item.goods_price}}</view>
                     <view class="goods_num">
-                        <view >-</view>
+                        <view bindtap="handleItemEdit" data-edit="{{-1}}" data-id="{{item.goods_id}}">-</view>
                         <view>{{item.num}}</view>
-                        <view >+</view>
+                        <view bindtap="handleItemEdit" data-edit="{{1}}" data-id="{{item.goods_id}}">+</view>
                     </view>
                 </view>
             </view>

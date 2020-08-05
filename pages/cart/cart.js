@@ -83,6 +83,38 @@ Page({
     })
     wx.setStorageSync('carList',cart)
   },
+  handleItemEdit(e){
+    const {edit,id} = e.currentTarget.dataset
+    // console.log(edit,id)
+    let {cart} = this.data
+    let index = cart.findIndex(v =>  v.goods_id === id)
+    cart.forEach(v => {
+      if(v.goods_id === id && edit === 1){
+          v.num += edit
+      }else if(v.goods_id === id && edit === -1){
+        if(v.num !== 1 ) return  v.num += edit
+        wx.showModal({
+          title: '是否删删除',
+          content: '',
+          showCancel: true,
+          cancelText: '取消',
+          cancelColor: '#000000',
+          confirmText: '确定',
+          confirmColor: '#3CC51F',
+          success: (result) => {
+            if(result.confirm){
+              cart.splice(index,1)
+              this.setDataStr(cart)
+            }
+          },
+          fail: ()=>{},
+          complete: ()=>{}
+        });
+       
+      }
+    })
+    this.setDataStr(cart)
+  },
   onLoad: function (options) {
 
   },

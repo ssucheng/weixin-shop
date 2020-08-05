@@ -1,20 +1,93 @@
 // pages/cart/cart.js
+import {
+  getSetting,
+  openSetting,
+  chooseAddress
+} from '../../api/util/util.js'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    address:{},
+    cart:[],
+    allPrice:0,
+    allNum:0,
+    allCollect:true
   },
-
+  onShow: function () {
+    // 获取地址信息
+    let address = wx.getStorageSync("address") || {}
+    // 获取购物车数据
+    let cart = wx.getStorageSync("carList") || []
+    let allNum = 0
+    let allPrice = 0
+    let allCollect = true
+      // 只有选中的才算钱 和数量
+     cart.forEach(v => {
+       if(!v.checked){
+           allCollect = false
+       }else{
+         
+        allNum += v.num
+        allPrice += v.goods_price * v.num
+       }
+      
+    })
+    // 空数组无法进行循环遍历所以 会影响allCollect的值 
+    allCollect = cart.length === 0?false:allCollect
+    this.setData({
+      address,
+      cart,
+      allNum,
+      allPrice,
+      allCollect
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
+  handlItemChange(e){
+    let {index} = e.currentTarget.dataset
+    let {cart}  = this.data
+    cart.forEach((v)=> {
+      if(index === v.goods_id){
+        v.checked= !v.checked
+      }
+    })
+    this.setDataStr(cart)
+  },
+  setDataStr(cart){
+    let allNum = 0
+    let allPrice = 0
+    let allCollect = true
+      // 只有选中的才算钱 和数量
+     cart.forEach(v => {
+       if(!v.checked){
+           allCollect = false
+       }else{
+         
+        allNum += v.num
+        allPrice += v.goods_price * v.num
+       }
+      
+    })
+    // 空数组无法进行循环遍历所以 会影响allCollect的值 
+    allCollect = cart.length === 0?false:allCollect
+    this.setData({
+      cart,
+      allNum,
+      allPrice,
+      allCollect
+    })
+    wx.setStorageSync('carList',cart)
+  },
   onLoad: function (options) {
 
   },
-  btn() {
+  
+  async btn() {
     // 1 获取用户的收货地址
     // 1 绑定点击事件
     // 2 调用小程序内置 api 获取用户的收货地址 wx.chooseAddress
@@ -29,38 +102,87 @@ Page({
     // 1 诱导用户 自己 打开 授权设置页面(wx.openSetting) 当用户重新给与 获取地址权限的时候
     // 2 获取收货地址
     // 4 把获取到的收货地址 存入到 本地存储中
-    wx.getSetting({
-      success: (result)=>{
-        console.log(result)
-        // 1 如果 scope.adress 为false 就获取用户地址权限
-        if(result.authSetting['scope.address'] === false) return wx.openSetting({
-          success: (result)=>{
-            // 3. 授权成功调用 获取地址
-            wx.chooseAddress({
-              success: (result)=>{
-                console.log(result)
-              },
-              fail: (err)=>{console.log(err)},
-              complete: ()=>{
-                console.log()
-              }
-            })
-          },
-          fail: (err)=>{console.log(err)},
-          complete: ()=>{}
-        })
-      },
-      fail: ()=>{},
-      complete: ()=>{}
-    })
-      // 2 不为false 就是 为true  或者 undefined 都可以进行下面代码
-    wx.chooseAddress({
-      success: (result)=>{
-        console.log(result)
-      },
-      fail: (err)=>{console.log(err)},
-      complete: ()=>{}
-    })
+
+    // 版本一：
+    // wx.getSetting({
+    //   success: (result)=>{
+    //     console.log(result)
+    //     const status = result.authSetting['scope.address']
+    //     // 1 如果为true  or undefined 就获取地址
+    //     if( status === true || status === undefined) {
+    //       wx.chooseAddress({
+    //         success: (result)=>{
+    //           console.log(result)
+    //         }
+    //       })
+    //     } else{
+    //       // 2 否则获取权限
+    //       wx.openSetting({
+    //         success: (result2)=>{
+    //           wx.chooseAddress({
+    //             success: (result3)=>{
+    //                 console.log(result3)
+    //             }
+
+    //           })
+    //         },
+    //         fail: (err)=>{console.log(err)},
+    //         complete: ()=>{}
+    //       })
+    //     }
+    //   },
+    //   fail: ()=>{},
+    //   complete: ()=>{}
+    // })
+    //  版本二：
+    // wx.getSetting({
+    //     success: (result)=>{
+    //       console.log(result)
+    //       const status = result.authSetting['scope.address']
+    //       // 1 如果为false 获取权限
+    //       if( status === false) {
+    //         wx.openSetting({
+    //           success: (result2)=>{
+    //             wx.chooseAddress({
+    //               success: (result3)=>{
+    //                   console.log(result3)
+    //               }
+
+    //             })
+    //           },
+    //           fail: (err)=>{console.log(err)},
+    //           complete: ()=>{}
+    //         })
+
+    //       } 
+    //     },
+    //     fail: ()=>{},
+    //     complete: ()=>{}
+    //   })
+    //   wx.chooseAddress({
+    //     success: (result)=>{
+    //       console.log(result)
+    //     }
+    //   })
+    try {
+      let res = await getSetting()
+      let status = res.authSetting['scope.address']
+      if (status === false) {
+        openSetting()
+      }
+      let address = await chooseAddress()
+      // 给address 添加个all属性用于显示信息
+      address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
+      // 添加到本地缓存中
+      wx.setStorageSync('address', address);
+    } catch (err) {
+      // console.log(err)
+    }
+  },
+  handlChange(){
+    // console.log(1)
+    this.btn()
+    
   },
 
   /**
@@ -73,9 +195,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏

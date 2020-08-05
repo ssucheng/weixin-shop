@@ -1,6 +1,136 @@
 /* pages/cart/cart.wxss */
-.cart{
-    .cart_item{
-       margin-top:20rpx
+.cart {
+    .cart_item {
+        margin-top: 20rpx
+    }
+
+    .user_info_row {
+        padding: 20rpx;
+
+        .user_info {
+            display: flex;
+            .name {
+                flex: 1;
+
+            }
+            .user_phone {
+                flex: 1;
+                text-align: center;
+            }
+        }
+        .user_address {
+            margin-top: 10rpx;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box; //作为弹性伸缩盒子模型显示。
+            -webkit-box-orient: vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+            -webkit-line-clamp: 2; //显示的行
+        }
+    }
+    .cart_content{
+        margin-top:10rpx;
+        .cart_txt{
+            height: 100rpx;
+            font-size: 38rpx;
+            padding-left: 10rpx;
+            line-height: 100rpx;
+            border-top: 1px solid var(--themeColor);
+            border-bottom: 1px solid var(--themeColor);
+
+        }
+        .cart_detail{
+            height: 230rpx;
+            display: flex;
+            border-bottom: 1px solid #eee;
+            .cart_left{
+                flex: 3;
+                display: flex;
+                .goods_check{
+                    display: flex;
+                    align-items: center;
+                }
+                .goods_logo{
+                    width: 70%;
+                    display: flex;
+                    align-items: center;
+                    image{
+                        width: 100%;
+                    }
+                }
+                
+            }
+            .cart_right{
+                flex:5;
+                .goods_title{
+                    margin-top: 20rpx;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box; //作为弹性伸缩盒子模型显示。
+                    -webkit-box-orient: vertical; //设置伸缩盒子的子元素排列方式--从上到下垂直排列
+                    -webkit-line-clamp: 2; //显示的行
+                }
+                .goods_content{
+                    margin-top:40rpx;
+                    display: flex;
+                    height: 80rpx;
+                    .goods_pirce{
+                        flex: 1;
+                        font-size: 38rpx;
+                        color: var(--themeColor);
+                    }
+                    .goods_num{
+                        flex:1;
+                        display: flex;
+                        justify-content: center;
+                        view{
+                            color: gray;
+                            width: 52rpx;
+                            height: 52rpx;
+                            border: 1px solid #eee;
+                            text-align: center;
+                           
+                            &:nth-child(2){
+                                border: none;
+                            }
+                        }
+                       
+                       
+                    }
+                }
+            }
+        }
+    }
+    .footer_bar{
+        border-top: 1px solid #eee;
+        width: 100%;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        height: 110rpx;
+        display: flex;
+       .foot_check{
+           flex:1;
+           display: flex;
+           align-items: center;
+       }
+       .foot_add{
+           flex: 2;
+           display: flex;
+           justify-content:center;
+           align-items: center;
+           .price{
+               color: var(--themeColor);
+               font-size: 38rpx ;
+           }
+       }
+       .foot_pay{
+           color: white;
+           flex: 1;
+           background-color: #f7554d;
+           display: flex;
+           justify-content:center;
+           align-items: center;
+           font-size: 40rpx;
+       }
     }
 }

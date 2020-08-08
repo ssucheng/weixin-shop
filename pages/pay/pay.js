@@ -3,7 +3,7 @@ import {
   getSetting,
   openSetting,
   chooseAddress,
-  showModal
+  showToast
 } from '../../api/util/util.js'
 Page({
 
@@ -22,10 +22,11 @@ Page({
     let address = wx.getStorageSync("address") || {}
     // 获取购物车数据
     let cart = wx.getStorageSync("carList") || []
+    const cart1 = cart.filter((v)=> v.checked)
     this.setData({
       address
     })
-    this.setDataStr(cart)
+    this.setDataStr(cart1)
     
   },
   /**
@@ -67,31 +68,12 @@ Page({
     })
     wx.setStorageSync('carList',cart)
   },
-  // 单个操作数量处理函数
-  async handleItemEdit(e){
-    const {edit,id} = e.currentTarget.dataset
-    // console.log(edit,id)
-    let {cart} = this.data
-    let index = cart.findIndex(v =>  v.goods_id === id)
-      // 如果商品数量为1并且点击的是 减号
-    if(cart[index].num === 1 && edit === -1){
-     let res = await showModal()
-     if(!res.confirm) return false
-     cart.splice(index,1)
-    }else{
-      cart[index].num += edit
-    }
-    this.setDataStr(cart)
-   
+  handlePays(){
+    // 暂无支付接口
+    showToast("暂无支付接口")
   },
-  handleAllSelect(){
-    // 点击全选
-    let {cart,allCollect}  = this.data
-    allCollect = !allCollect
-    cart.forEach(v=> v.checked = allCollect)
-    this.setDataStr(cart)
-
-  },
+ 
+  
   onLoad: function (options) {
 
   },

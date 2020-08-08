@@ -16,14 +16,10 @@
     </view>
     <!-- 购物车 -->
     <view class="cart_content" >
-        <view class="cart_txt">购物车</view>
+        <view class="cart_txt">我的订单</view>
         <view class="cart_detail" wx:if="{{cart.length === 0 ? false:true}}" wx:for="{{cart}}" wx:key="goods_id">
             <view class="cart_left">
-                <view class="goods_check">
-                    <checkbox-group bindchange="handlItemChange" data-index="{{item.goods_id}}">
-                        <checkbox checked="{{item.checked}}"></checkbox>
-                    </checkbox-group>
-                </view>
+              
                 <view class="goods_logo">
                     <image class="" src="{{item.goods_small_logo}}" mode="widthFix"></image>
                 </view>
@@ -33,9 +29,7 @@
                 <view class="goods_content">
                     <view class="goods_pirce">￥{{item.goods_price}}</view>
                     <view class="goods_num">
-                        <view bindtap="handleItemEdit" data-edit="{{-1}}" data-id="{{item.goods_id}}">-</view>
-                        <view>{{item.num}}</view>
-                        <view bindtap="handleItemEdit" data-edit="{{1}}" data-id="{{item.goods_id}}">+</view>
+                        <view>x{{item.num}}</view>
                     </view>
                 </view>
             </view>
@@ -48,16 +42,13 @@
     <!-- bar -->
      <view class="footer_bar">
             <view class="foot_check"> 
-                <checkbox-group bindchange="handleAllSelect">
-                    <checkbox checked="{{allCollect}}"> 全选</checkbox>
-                </checkbox-group>
-                
+              
             </view>
             <view class="foot_add">
                 <view>合计：<text class="price">￥{{allPrice}}</text></view>
             </view>
-            <view class="foot_pay" >
-                结算({{allNum}})
+            <view class="foot_pay" bindtap="handlePays">
+                支付({{allNum}})
             </view>
         </view>
 </view>

@@ -41,17 +41,17 @@ export const chooseAddress = () => {
         });
     })
 }
-// 提示框
-export const showModal = () => {
+/**
+ * @method showModal
+ * @param {stirng} content 提示的主题内容
+ * @return {object} 
+ * promise 形式 showModal
+ */
+export const showModal = (content) => {
     return new Promise((resolve, reject) => {
         wx.showModal({
-            title: '是否删除商品',
-            content: '',
-            showCancel: true,
-            cancelText: '取消',
-            cancelColor: '#000000',
-            confirmText: '确定',
-            confirmColor: '#3CC51F',
+            title: '提示',
+            content: content,
             success: (result) => {
                 resolve(result)
             },
@@ -60,5 +60,46 @@ export const showModal = () => {
             },
             complete: () => {}
         });
+    })
+}
+/**
+ * @method showToast
+ * @param {string} title 要提示文字的内容
+ * 
+ * promise 形式 showToast
+ */
+export const showToast = (title) => {
+    return new Promise((resolve, reject) => {
+        wx.showToast({
+            title:title,
+            icon:'none',
+            success: (result) => {
+                resolve(result)
+            },
+            fail: (error) => {
+                reject(error)
+            },
+            complete: () => {}
+        });
+    })
+}
+/** 
+ * @method navigateTo 
+ *
+ *@param {string} url 地址字符串
+ *@return promise 形式 wx-navigateTo
+*/
+export const navigateTo = (url) => {
+    return new Promise((resolve,reject) => {
+        wx.navigateTo({
+            url,
+            success: (result)=>{
+                resolve(result)
+            },
+            fail: (err)=>{
+             reject(err)
+            },
+            complete: ()=>{}
+          });
     })
 }

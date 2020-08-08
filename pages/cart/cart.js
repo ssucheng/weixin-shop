@@ -3,7 +3,9 @@ import {
   getSetting,
   openSetting,
   chooseAddress,
-  showModal
+  showModal,
+  showToast,
+  navigateTo
 } from '../../api/util/util.js'
 Page({
 
@@ -22,29 +24,11 @@ Page({
     let address = wx.getStorageSync("address") || {}
     // 获取购物车数据
     let cart = wx.getStorageSync("carList") || []
-    let allNum = 0
-    let allPrice = 0
-    let allCollect = true
-      // 只有选中的才算钱 和数量
-     cart.forEach(v => {
-       if(!v.checked){
-           allCollect = false
-       }else{
-         
-        allNum += v.num
-        allPrice += v.goods_price * v.num
-       }
-      
-    })
-    // 空数组无法进行循环遍历所以 会影响allCollect的值 
-    allCollect = cart.length === 0?false:allCollect
     this.setData({
-      address,
-      cart,
-      allNum,
-      allPrice,
-      allCollect
+      address
     })
+    this.setDataStr(cart)
+    
   },
   /**
    * 生命周期函数--监听页面加载
@@ -59,6 +43,7 @@ Page({
     })
     this.setDataStr(cart)
   },
+  // 设置cart 到内存和缓存中
   setDataStr(cart){
     let allNum = 0
     let allPrice = 0
@@ -84,6 +69,7 @@ Page({
     })
     wx.setStorageSync('carList',cart)
   },
+  // 单个操作数量处理函数
   async handleItemEdit(e){
     const {edit,id} = e.currentTarget.dataset
     // console.log(edit,id)
@@ -91,39 +77,31 @@ Page({
     let index = cart.findIndex(v =>  v.goods_id === id)
       // 如果商品数量为1并且点击的是 减号
     if(cart[index].num === 1 && edit === -1){
-     let res = await showModal()
+     let res = await showModal('确定删除商品')
      if(!res.confirm) return false
      cart.splice(index,1)
     }else{
       cart[index].num += edit
     }
     this.setDataStr(cart)
-    // cart.forEach(v => {
-    //   if(v.goods_id === id && edit === 1){
-    //       v.num += edit
-    //   }else if(v.goods_id === id && edit === -1){
-    //     if(v.num !== 1 ) return  v.num += edit
-    //     wx.showModal({
-    //       title: '是否删删除',
-    //       content: '',
-    //       showCancel: true,
-    //       cancelText: '取消',
-    //       cancelColor: '#000000',
-    //       confirmText: '确定',
-    //       confirmColor: '#3CC51F',
-    //       success: (result) => {
-    //         if(result.confirm){
-    //           cart.splice(index,1)
-    //           this.setDataStr(cart)
-    //         }
-    //       },
-    //       fail: ()=>{},
-    //       complete: ()=>{}
-    //     });
-       
-    //   }
-    // })
-    // this.setDataStr(cart)
+   
+  },
+  handleAllSelect(){
+    // 点击全选
+    let {cart,allCollect}  = this.data
+    allCollect = !allCollect
+    cart.forEach(v=> v.checked = allCollect)
+    this.setDataStr(cart)
+
+  },
+  // 结算
+  handlePay(){
+    if(!this.data.address.userName){
+      return showToast('购物车地址未填写')
+    }else if(!this.data.cart.length){
+      return showToast('未添加商品')
+    }
+    navigateTo('/pages/pay/pay')
   },
   onLoad: function (options) {
 

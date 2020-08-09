@@ -1,4 +1,7 @@
 /* pages/cart/cart.wxss */
+.cart {
+  padding-bottom: 180rpx;
+}
 .cart .cart_item {
   margin-top: 20rpx;
 }
@@ -98,6 +101,7 @@
   transform: translate(-50%, -50%);
 }
 .cart .footer_bar {
+  background-color: white;
   border-top: 1px solid #eee;
   width: 100%;
   position: fixed;

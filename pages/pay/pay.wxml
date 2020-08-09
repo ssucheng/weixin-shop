@@ -5,7 +5,7 @@
         <button type="primary" bindtap="btn">获取地址</button>
     </view>
     <!-- 地址 -->
-    <view wx:else class="user_info_row" bindtap="handlChange">
+    <view wx:else class="user_info_row" >
         <view class="user_info">
             <view class="name">收货人：{{address.userName}}</view>
             <view class="user_phone">{{address.telNumber}}</view>

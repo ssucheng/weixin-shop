@@ -169,12 +169,8 @@ Page({
     } catch (err) {
       // console.log(err)
     }
-  },
-  handlChange(){
-    // console.log(1)
-    this.btn()
-    
-  },
+  }
+  
 
   /**
    * 生命周期函数--监听页面初次渲染完成

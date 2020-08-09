@@ -90,7 +90,6 @@ Page({
       }
       wx.setStorageSync('carList',carList)
       let carList1 = wx.getStorageSync('carList') || []
-      console.log(carList1)
   },
   // 点击收藏事件
   handlItemCollect(){

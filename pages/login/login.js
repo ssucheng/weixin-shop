@@ -1,5 +1,5 @@
 // pages/login/login.js
-import {switchTab} from '../../api/util/util'
+import {switchTab,getSetting,openSetting} from '../../api/util/util'
 Page({
 
   /**
@@ -11,11 +11,25 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-
+  onShow: function () {
+    
   },
-  handleLogin(e){
+  
+  async handleLogin(e){
     const {userInfo} = e.detail
+  // const  {authSetting:res} =  await getSetting()
+  //   if(res['scope.userInfo']  === true){
+  //     return wx.getUserInfo({
+  //       withCredentials: 'false',
+  //       lang: 'zh_CN',
+  //       timeout:10000,
+  //       success: (result)=>{
+          
+  //       },
+  //       fail: ()=>{},
+  //       complete: ()=>{}
+  //     });
+  //   }
     wx.setStorageSync('userInfo', userInfo);
     // if(userInfo) return switchTab('/pages/user/user')
     switchTab('/pages/user/user')
@@ -31,9 +45,7 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏

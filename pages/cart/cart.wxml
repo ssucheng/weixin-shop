@@ -5,7 +5,7 @@
         <button type="primary" bindtap="btn">获取地址</button>
     </view>
     <!-- 地址 -->
-    <view wx:else class="user_info_row" bindtap="handlChange">
+    <view wx:else class="user_info_row" bindtap="{{buttonClicked?'handlChange':''}}">
         <view class="user_info">
             <view class="name">收货人：{{address.userName}}</view>
             <view class="user_phone">{{address.telNumber}}</view>
@@ -33,7 +33,7 @@
                 <view class="goods_content">
                     <view class="goods_pirce">￥{{item.goods_price}}</view>
                     <view class="goods_num">
-                        <view bindtap="handleItemEdit" data-edit="{{-1}}" data-id="{{item.goods_id}}">-</view>
+                        <view bindtap="{{buttonClicked?'handleItemEdit':''}}" data-edit="{{-1}}" data-id="{{item.goods_id}}">-</view>
                         <view>{{item.num}}</view>
                         <view bindtap="handleItemEdit" data-edit="{{1}}" data-id="{{item.goods_id}}">+</view>
                     </view>

@@ -13,6 +13,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    buttonClicked:true,
     address:{},
     cart:[],
     allPrice:0,
@@ -77,6 +78,7 @@ Page({
     let index = cart.findIndex(v =>  v.goods_id === id)
       // 如果商品数量为1并且点击的是 减号
     if(cart[index].num === 1 && edit === -1){
+     this.buttonClicked(this)
      let res = await showModal('确定删除商品')
      if(!res.confirm) return false
      cart.splice(index,1)
@@ -84,7 +86,18 @@ Page({
       cart[index].num += edit
     }
     this.setDataStr(cart)
+    
    
+  },
+   buttonClicked(self) {
+    self.setData({
+      buttonClicked: false
+    })
+    setTimeout(function () {
+      self.setData({
+        buttonClicked: true
+      })
+    }, 500)
   },
   handleAllSelect(){
     // 点击全选
@@ -201,6 +214,7 @@ Page({
   },
   handlChange(){
     // console.log(1)
+    this.buttonClicked(this)
     this.btn()
     
   },

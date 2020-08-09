@@ -48,3 +48,11 @@ export function getGoodsDetailApi(url,params){
         method:'GET'
     })
 }
+// 搜索
+export function getGoodsSearch(url,params){
+    return fetch({
+        url:api.baseUrl + url,
+        data:{...params},
+        method:'GET'
+    })
+}

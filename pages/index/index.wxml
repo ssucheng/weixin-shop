@@ -36,11 +36,11 @@
             <image mode="widthFix" src="{{item.floor_title.image_src}}"></image>
           </view>
            <view class="floorItem_content" >
-             <navigator wx:for="{{item.product_list}}"
+             <navigator  wx:for="{{item.product_list}}"
              wx:key="name"
              wx:for-index="index1"
              wx:for-item="item1" 
-             url="{{item1.navigator_url}}">
+             url="/pages/goods_list/goods_list?cid=23">
                 <image mode="{{index1 == 0 ?'':'scaleToFill'}}" src="{{item1.image_src}}"></image>
              </navigator>
           </view>

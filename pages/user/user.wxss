@@ -12,6 +12,7 @@ page {
   position: relative;
 }
 .user_info_wrap .user_img_wrap .user_bg {
+  width: 100%;
   height: 50vh;
   filter: blur(10rpx);
 }

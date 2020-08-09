@@ -8,7 +8,7 @@
     </view>
   </view>
   <view wx:else class="user_btn">
-    <navigator url="/pages/login/index" >登录</navigator>
+    <navigator url="/pages/login/login" >登录</navigator>
   </view>
 </view>
 <view class="user_content">

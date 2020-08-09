@@ -103,3 +103,24 @@ export const navigateTo = (url) => {
           });
     })
 }
+
+/** 
+ * @method switchTab 
+ *
+ *@param {string} url 地址字符串
+ *@return promise 形式 wx.switchTab
+*/
+export const switchTab = (url) => {
+    return new Promise((resolve,reject) => {
+        wx.switchTab({
+            url,
+            success: (result)=>{
+                resolve(result)
+            },
+            fail: (err)=>{
+             reject(err)
+            },
+            complete: ()=>{}
+          });
+    })
+}

@@ -1,11 +1,11 @@
 // pages/login/login.js
+import {switchTab} from '../../api/util/util'
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
   },
 
   /**
@@ -13,6 +13,12 @@ Page({
    */
   onLoad: function (options) {
 
+  },
+  handleLogin(e){
+    const {userInfo} = e.detail
+    wx.setStorageSync('userInfo', userInfo);
+    // if(userInfo) return switchTab('/pages/user/user')
+    switchTab('/pages/user/user')
   },
 
   /**

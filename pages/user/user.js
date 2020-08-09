@@ -1,4 +1,5 @@
 // pages/user/user.js
+import {showModal} from '../../api/util/util'
 Page({
 
   /**
@@ -11,11 +12,20 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onShow: function (options) {
     const userinfo = wx.getStorageSync("userInfo") || {}
     this.setData({
       userinfo
     })
+  },
+  async handleOutLogin(){
+    const {confirm:res} = await showModal('是否退出登录')
+    if(!res) return false
+    let userinfo = ''
+    this.setData({
+      userinfo
+    })
+    wx.setStorageSync('userInfo',userinfo)
   },
 
   /**
@@ -25,12 +35,7 @@ Page({
 
   },
 
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
+  
 
   /**
    * 生命周期函数--监听页面隐藏
